@@ -5,10 +5,12 @@ const KEYS = {
 };
 
 let game = {
+  running: true,
   ctx: null,
   platform: null,
   ball: null,
   blocks: [],
+  score: 0,
   rows: 4,
   cols: 8,
   width: 640,
@@ -19,7 +21,7 @@ let game = {
     platform: null,
     block: null,
   },
-  init: function () {
+  init() {
     this.ctx = document.getElementById("mycanvas").getContext("2d");
     this.setEvents();
   },
@@ -77,21 +79,29 @@ let game = {
     for (let block of this.blocks) {
       if (block.active && this.ball.collide(block)) {
         this.ball.bumpBlock(block);
+        this.addScore();
       }
     }
   },
-
+  addScore() {
+    ++this.score;
+    if (this.score >= this.blocks.length) {
+      this.end("Вы выйграли");
+    }
+  },
   collidePlatform() {
     if (this.ball.collide(this.platform)) {
       this.ball.bumpPlatform(this.platform);
     }
   },
   run() {
-    window.requestAnimationFrame(() => {
-      this.update();
-      this.render();
-      this.run();
-    });
+    if (this.running) {
+      window.requestAnimationFrame(() => {
+        this.update();
+        this.render();
+        this.run();
+      });
+    }
   },
   render() {
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -126,6 +136,11 @@ let game = {
   },
   random(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  },
+  end(message) {
+    game.running = false;
+    alert(message);
+    window.location.reload();
   },
 };
 
@@ -187,7 +202,7 @@ game.ball = {
       this.y = 0;
       this.dy = this.velocity;
     } else if (ballBottom > worldBottom) {
-      console.log("dsf");
+      game.end("Вы проиграли(");
     }
   },
   bumpBlock(block) {
