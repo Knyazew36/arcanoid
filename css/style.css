@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 600px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.col-header {
+  width: 150px;
+  -webkit-box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+          box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+}
+
+.item {
+  position: relative;
+  width: 150px;
+  height: 66px;
+  border: 1px solid #eee;
+  -webkit-box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+          box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 20px;
+  background: #f7f6f7;
+  padding: 0.8rem 1rem;
+  color: #828282;
+  text-align: center;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.item:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.placeholder {
+  width: 150px;
+  height: 66px;
+}
+
+.start {
+  background: -webkit-gradient(linear, left top, right top, from(#ff85e4), color-stop(179.25%, #229efd));
+  background: linear-gradient(90deg, #ff85e4 0%, #229efd 179.25%);
+}
+
+.progress {
+  background: -webkit-gradient(linear, left top, right top, from(#209cff), to(#68e0cf));
+  background: linear-gradient(90deg, #209cff 0%, #68e0cf 100%);
+}
+
+.done {
+  background: -webkit-gradient(linear, left top, right top, from(#84fab0), to(#8fd3f4));
+  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.hold {
+  color: violet;
+}
+.hold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: -3px;
+  border-radius: inherit;
+  z-index: -1;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.hide {
+  display: none;
+}
+
+.hovered {
+  border: 2px dashed grey;
+  border-radius: 20px;
+}
