@@ -23,7 +23,12 @@ let game = {
   },
   init() {
     this.ctx = document.getElementById("mycanvas").getContext("2d");
+    this.setTextFont();
     this.setEvents();
+  },
+  setTextFont() {
+    this.ctx.fillStyle = "#FFFFFF";
+    this.ctx.font = "20px Arial";
   },
   setEvents() {
     window.addEventListener("keydown", (e) => {
@@ -119,6 +124,7 @@ let game = {
     );
     this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
     this.renderBlocks();
+    this.ctx.fillText("Score: " + this.score, 10, 28);
   },
   renderBlocks() {
     for (let block of this.blocks) {
