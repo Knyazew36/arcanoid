@@ -12,6 +12,7 @@ let game = {
   blocks: [],
   score: 0,
   rows: 4,
+  // rows2: 14,
   cols: 8,
   width: 640,
   height: 360,
